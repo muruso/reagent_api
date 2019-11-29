@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  maker: 
+  model_num: 1
+  capacity: 
+  price: 
+  consumption_per_week: 
+
+two:
+  name: 
+  maker: 
+  model_num: 1
+  capacity: 
+  price: 
+  consumption_per_week: 
