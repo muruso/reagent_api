@@ -4,6 +4,11 @@ module Api
 
       before_action :set_reagent, only: [:show, :update, :destory]
 
+      def index
+        render json: { reagents: Reagent.all }
+
+      end
+
       def new
       end
     
