@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_26_083900) do
+ActiveRecord::Schema.define(version: 2020_01_26_085634) do
 
   create_table "orders", force: :cascade do |t|
     t.time "ordered_at"
     t.time "delivered_at"
     t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders_reagents", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "reagent_id"
+    t.integer "reagent_amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -29,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_01_26_083900) do
     t.string "consumption_per_week"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "reagent_id"
   end
 
 end

@@ -1,3 +1,6 @@
+# TODO: 多対多の中間テーブルでどうやって登録するか
+
+
 module Api
   module V1
     class OrdersController < ApplicationController
@@ -5,7 +8,17 @@ module Api
       # before_action :set_reagent, only: [:show, :update, :destory]
 
       def index
-        render json: { reagents: Order.all }
+        render json: {orders: Order.all.map {|order| 
+          {
+            # name: order.user.name,
+            ordered_at: order.ordered_at,
+            delivered_at: order.delivered_at,
+            reagents: order.orders_reagents.map{|order_reagent| {
+              reagent_name: order_reagent.reagent.name,
+            }}
+          }
+        }}
+        # render json: { orders: Order.all }
       end
 
       def new
@@ -15,19 +28,19 @@ module Api
       end
 
       def create
-        # reagent = Reagent.new(reagent_params)
-        # if reagent.save
-        #   render json: { status: 'SUCCESS', data: reagent }
-        # else
-        #   render json: { status: 'ERROR', data: reagent.errors }
-        # end
+        order = Order.new(order_params)
+        if reagent.save
+          render json: { status: 'SUCCESS', data: reagent }
+        else
+          render json: { status: 'ERROR', data: reagent.errors }
+        end
       end
 
       private
 
-      # def reagent_params
-      #   params.require(:reagent).permit(:name, :maker, :model_num, :capacity, :price)
-      # end
+      def order_params
+        params.require(:order)
+      end
 
     end
   end
