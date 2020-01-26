@@ -6,7 +6,6 @@ module Api
 
       def index
         render json: { reagents: Reagent.all }
-
       end
 
       def new

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ordered_at: 2020-01-26 17:39:00
+  delivered_at: 2020-01-26 17:39:00
+  user_id: 1
+
+two:
+  ordered_at: 2020-01-26 17:39:00
+  delivered_at: 2020-01-26 17:39:00
+  user_id: 1
