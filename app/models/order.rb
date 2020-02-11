@@ -4,3 +4,4 @@ class Order < ApplicationRecord
   has_many :orders_reagents
   has_many :reagents, through: :orders_reagents
 end
+
