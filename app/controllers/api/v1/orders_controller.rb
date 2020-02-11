@@ -1,6 +1,3 @@
-# TODO: 多対多の中間テーブルでどうやって登録するか
-
-
 module Api
   module V1
     class OrdersController < ApplicationController
@@ -8,26 +5,19 @@ module Api
       # before_action :set_reagent, only: [:show, :update, :destory]
 
       def index
-
-        ## TODO: fixme
-
+        ## TODO: fixme, add name addribute
         render json: {orders: Order.all.map {|order| 
           {
-            # name: order.user.name,
             ordered_at: order.ordered_at,
             delivered_at: order.delivered_at,
-
+            total_price: order.total_price,
             reagents: order.orders_reagents.map{|os| {
               reagent_name: os.reagent.name,
               reagent_price: os.reagent_price,
               reagent_amount: os.reagent_amount
-            }},
-
-            total_price: order.total_price
-            
+            }}
           }
         }}
-        # render json: { orders: Order.all }
       end
 
       def new
